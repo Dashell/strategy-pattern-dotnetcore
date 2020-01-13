@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using StrategyPatternSample.API.Models;
 using StrategyPatternSample.API.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StrategyPatternSample.API.Controllers
 {
@@ -14,7 +11,7 @@ namespace StrategyPatternSample.API.Controllers
     public class ConfirmationController : ControllerBase
     {
 
-        private readonly Dictionary<Channel,IConfirmationService> iConfirmationServices;
+        private readonly Dictionary<Channel, IConfirmationService> iConfirmationServices;
 
 
         public ConfirmationController(IEnumerable<IConfirmationService> iConfirmationServices)

@@ -1,10 +1,7 @@
 ﻿using Moq;
 using StrategyPatternSample.API.Controllers;
 using StrategyPatternSample.API.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace StrategyPatternSample.API.Tests.Controllers
@@ -37,9 +34,8 @@ namespace StrategyPatternSample.API.Tests.Controllers
             controller.Get(Models.Channel.SMS, phoneNumber);
 
             // assert
-            confirmationSMSService.Verify(mock => mock.SendNotification(It.Is<string>(id => id.Equals(phoneNumber))),Times.Once);
-            confirmationEmailService.Verify(mock => mock.SendNotification(It.IsAny<string>()),Times.Never);
-
+            confirmationSMSService.Verify(mock => mock.SendNotification(It.Is<string>(id => id.Equals(phoneNumber))), Times.Once);
+            confirmationEmailService.Verify(mock => mock.SendNotification(It.IsAny<string>()), Times.Never);
         }
 
         [Fact]
@@ -53,8 +49,6 @@ namespace StrategyPatternSample.API.Tests.Controllers
             // assert
             confirmationEmailService.Verify(mock => mock.SendNotification(It.Is<string>(id => id.Equals(email))), Times.Once);
             confirmationSMSService.Verify(mock => mock.SendNotification(It.IsAny<string>()), Times.Never);
-
         }
-
     }
 }
